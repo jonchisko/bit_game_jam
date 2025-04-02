@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehdv2dgih615"]
+
+[ext_resource type="Script" path="res://scenes/levels/prototype/obstacle_test.gd" id="1_f4pjd"]
+[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="1_gqv3l"]
+
+[node name="ObstacleTest" type="PathFollow2D"]
+position = Vector2(579, 0)
+rotation = 1.56712
+script = ExtResource("1_f4pjd")
+
+[node name="Obstacle2" type="Sprite2D" parent="."]
+rotation = -1.82013
+scale = Vector2(0.229665, 0.260606)
+texture = ExtResource("1_gqv3l")

@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://c451vjg3td32"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu/options_menu_ui.gd" id="1_2ishm"]
+[ext_resource type="PackedScene" uid="uid://dyrwvwpgcf5d1" path="res://scenes/ui/AudioButton/audio_button.tscn" id="2_yschl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk7ea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yasbx"]
+
+[node name="OptionsMenuUi" type="PanelContainer"]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 256.0
+grow_vertical = 2
+script = ExtResource("1_2ishm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AudioSection" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AudioSection"]
+layout_mode = 2
+text = "AUDIO SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Master"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "MASTER"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.0
+
+[node name="Sfx" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Sfx"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "SFX"
+
+[node name="SfxSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Sfx"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.0
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pk7ea")
+
+[node name="WindowSection" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WindowSection"]
+layout_mode = 2
+text = "WINDOW SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindowSettings" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 0
+
+[node name="WindowButton" parent="MarginContainer/VBoxContainer/WindowSettings" instance=ExtResource("2_yschl")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "FULLSCREEN"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yasbx")
+
+[node name="CloseOptions" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 5
+
+[node name="CloseButton" parent="MarginContainer/VBoxContainer/CloseOptions" instance=ExtResource("2_yschl")]
+layout_mode = 2
+text = "CLOSE"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Sfx/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowSettings/WindowButton" to="." method="_on_window_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseOptions/CloseButton" to="." method="_on_close_button_pressed"]

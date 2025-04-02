@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2oaqbncwhxvp"]
+
+[ext_resource type="Script" path="res://scenes/levels/prototype/test_level.gd" id="1_qxmbi"]
+[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_abkh4"]
+[ext_resource type="Script" path="res://scenes/levels/prototype/player.gd" id="2_phf3c"]
+
+[sub_resource type="Curve2D" id="Curve2D_r2ptk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 424, 80, 0, 0, 0, 0, 369, 296, 0, 0, 0, 0, 292, 440, 0, 0, 0, 0, 203, 546, 0, 0, 0, 0, 25.9139, 640.303)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_pc3cm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 579, 0, 0, 0, 0, 0, 580, 272, 0, 0, 0, 0, 579, 647)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_2k3tc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, 471, 0, 0, 0, 0, 579, 582, 0, 0, 0, 0, 1151, 471)
+}
+point_count = 3
+
+[node name="TestLevel" type="Node2D" node_paths=PackedStringArray("paths")]
+script = ExtResource("1_qxmbi")
+paths = [NodePath("Path2D"), NodePath("Path2D2"), NodePath("Path2D3")]
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-31.85, -90.093)
+scale = Vector2(1.30625, 1.15116)
+curve = SubResource("Curve2D_r2ptk")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_pc3cm")
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1190, -90)
+scale = Vector2(-1.306, 1.151)
+curve = SubResource("Curve2D_r2ptk")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="PlayerMovement" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2k3tc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PlayerMovement"]
+position = Vector2(-2, 471)
+rotation = 0.188775
+script = ExtResource("2_phf3c")
+speed = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerMovement/PathFollow2D"]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_abkh4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

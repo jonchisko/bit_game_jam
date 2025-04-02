@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkaf1e56tgrpi"]
+
+[ext_resource type="PackedScene" uid="uid://cspgy0hihabqn" path="res://scenes/ui/main_menu/main_menu_ui.tscn" id="1_pkml6"]
+[ext_resource type="PackedScene" uid="uid://c451vjg3td32" path="res://scenes/ui/main_menu/options_menu_ui.tscn" id="2_eru6h"]
+[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_fvu17"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuUi" parent="CanvasLayer" node_paths=PackedStringArray("options_menu") instance=ExtResource("1_pkml6")]
+options_menu = NodePath("../OptionsMenuUi")
+
+[node name="OptionsMenuUi" parent="CanvasLayer" instance=ExtResource("2_eru6h")]
+
+[node name="PLACEHOLDER" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0489649, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.855229, -0.158039, 0.493566, 0, 0.952369, 0.304947, -0.518251, -0.2608, 0.814493, 1.95017, 1.69896, 3.72524)
+fov = 80.7345
+
+[node name="REMOVE_IN_FINAL_DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61909, 2.09819, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.731794, 0, 0.681526, 0, 1, 0, -0.681526, 0, 0.731794, -1.44009, 0.0301676, 0.447587)
+texture = ExtResource("2_fvu17")
