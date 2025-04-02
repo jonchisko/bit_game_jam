@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://xkxm8emh370m"]
+
+[ext_resource type="Script" path="res://scenes/autoloads/SceneTransition/scene_transition.gd" id="1_dp657"]
+[ext_resource type="Shader" path="res://scenes/autoloads/SceneTransition/scene_transition.gdshader" id="2_7t68n"]
+[ext_resource type="Texture2D" uid="uid://bd7sy8gc1mw7" path="res://assets/sprites/ui/screen_transition.png" id="3_q71qy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04ah4"]
+shader = ExtResource("2_7t68n")
+shader_parameter/transition_color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+shader_parameter/transition_texture = ExtResource("3_q71qy")
+
+[sub_resource type="Animation" id="Animation_epml5"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2.82843, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_np0yo"]
+resource_name = "out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_un4iv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urbyt"]
+_data = {
+"RESET": SubResource("Animation_un4iv"),
+"in": SubResource("Animation_epml5"),
+"out": SubResource("Animation_np0yo")
+}
+
+[node name="SceneTransition" type="Node"]
+script = ExtResource("1_dp657")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 20
+material = SubResource("ShaderMaterial_04ah4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_urbyt")
+}

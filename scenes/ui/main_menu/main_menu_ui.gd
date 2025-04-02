@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	self.get_tree().change_scene_to_file("res://scenes/levels/prototype/obstacle_test.tscn")
+	SceneTransition.change_to_scene("res://scenes/levels/prototype/obstacle_test.tscn")
 
 
 func _on_options_button_pressed() -> void:
