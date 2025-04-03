@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmt8us5v6e8sb"]
+[gd_scene load_steps=10 format=3 uid="uid://dmt8us5v6e8sb"]
 
 [ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
+[ext_resource type="PackedScene" uid="uid://bdj684bs0faxl" path="res://scenes/objects/obstacle/obstacle.tscn" id="2_5ijne"]
+[ext_resource type="Script" path="res://scenes/levels/main_level/tmp_manager.gd" id="2_24wj8"]
 
 [sub_resource type="Curve2D" id="Curve2D_x524x"]
 _data = {
@@ -62,6 +64,10 @@ position = Vector2(-1.89706, 0.110294)
 scale = Vector2(1.00735, 1.00735)
 curve = SubResource("Curve2D_xf5hn")
 
+[node name="Obstacle" parent="ObstacleMovementArea/Path2D" instance=ExtResource("2_5ijne")]
+position = Vector2(310, -15)
+rotation = 2.24554
+
 [node name="Path2D2" type="Path2D" parent="ObstacleMovementArea"]
 curve = SubResource("Curve2D_b2yy7")
 
@@ -73,5 +79,15 @@ position = Vector2(-2.57855, 0.121428)
 scale = Vector2(1.00714, 1.00714)
 curve = SubResource("Curve2D_i42wn")
 
+[node name="Obstacle" parent="ObstacleMovementArea/Path2D4" instance=ExtResource("2_5ijne")]
+position = Vector2(340, -15)
+rotation = 1.19242
+
 [node name="Path2D5" type="Path2D" parent="ObstacleMovementArea"]
 curve = SubResource("Curve2D_cd00j")
+
+[node name="TmpManager" type="Node" parent="."]
+script = ExtResource("2_24wj8")
+
+[node name="Timer" type="Timer" parent="TmpManager"]
+autostart = true

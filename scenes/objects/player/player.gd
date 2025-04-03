@@ -37,8 +37,6 @@ func _move(delta: float) -> void:
 	
 	if self.progress_ratio == 0.0 or self.progress_ratio == 1.0:
 		self._movement_speed = 0.0
-	
-	print(self._movement_speed)
 
 
 func _on_pick_up_area_area_entered(area: Area2D) -> void:

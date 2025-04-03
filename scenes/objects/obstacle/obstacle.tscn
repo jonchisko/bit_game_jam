@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdj684bs0faxl"]
+
+[ext_resource type="Script" path="res://scenes/objects/obstacle/obstacle.gd" id="1_tbqg5"]
+[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_4atca"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjgs0"]
+radius = 21.0
+
+[node name="Obstacle" type="PathFollow2D"]
+script = ExtResource("1_tbqg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_4atca")
+
+[node name="TriggerArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+shape = SubResource("CircleShape2D_hjgs0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
