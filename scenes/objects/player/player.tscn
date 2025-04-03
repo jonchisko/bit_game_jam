@@ -29,5 +29,21 @@ debug_color = Color(0.176803, 0.616777, 0.519976, 0.42)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_rgj0n")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 19)
+amount = 6
+randomness = 0.06
+lifetime_randomness = 0.21
+texture = ExtResource("2_rgj0n")
+direction = Vector2(0, 1)
+spread = 56.67
+gravity = Vector2(0, 100)
+initial_velocity_min = 60.18
+initial_velocity_max = 120.35
+angular_velocity_min = -46.67
+angular_velocity_max = 73.33
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
