@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmt8us5v6e8sb"]
+
+[ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
+
+[sub_resource type="Curve2D" id="Curve2D_x524x"]
+_data = {
+"points": PackedVector2Array(0, 0, 262, 80, 36, 292, -262, 80, 293.169, -113.372, 620, 292)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xf5hn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 310, -15, 290.178, -190.202, -290.178, 190.202, -14, 390)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b2yy7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 320, -15, 141.808, -203.187, -141.808, 203.187, 171, 390)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_fv2j5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 330, -15, 0, 0, 0, 0, 330, 390)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_i42wn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 340, -15, -140, -203, 135.158, 186.21, 501, 390)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_cd00j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 350, -15, -290, -190, 173.027, 38.0976, 654, 390)
+}
+point_count = 2
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+
+[node name="Background" type="Node" parent="."]
+
+[node name="PlayerMovementArea" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="PlayerMovementArea"]
+curve = SubResource("Curve2D_x524x")
+
+[node name="Player" parent="PlayerMovementArea/Path2D" instance=ExtResource("1_odyes")]
+position = Vector2(36, 292)
+rotation = 0.296352
+loop = false
+
+[node name="ObstacleMovementArea" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="ObstacleMovementArea"]
+position = Vector2(-1.89706, 0.110294)
+scale = Vector2(1.00735, 1.00735)
+curve = SubResource("Curve2D_xf5hn")
+
+[node name="Path2D2" type="Path2D" parent="ObstacleMovementArea"]
+curve = SubResource("Curve2D_b2yy7")
+
+[node name="Path2D3" type="Path2D" parent="ObstacleMovementArea"]
+curve = SubResource("Curve2D_fv2j5")
+
+[node name="Path2D4" type="Path2D" parent="ObstacleMovementArea"]
+position = Vector2(-2.57855, 0.121428)
+scale = Vector2(1.00714, 1.00714)
+curve = SubResource("Curve2D_i42wn")
+
+[node name="Path2D5" type="Path2D" parent="ObstacleMovementArea"]
+curve = SubResource("Curve2D_cd00j")

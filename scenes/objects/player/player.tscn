@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ex8a32wb0psw"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_pimm5"]
+[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_rgj0n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jk3ah"]
+radius = 17.0294
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xe7ji"]
+radius = 23.0
+
+[node name="Player" type="PathFollow2D"]
+script = ExtResource("1_pimm5")
+max_movement_speed = 1.0
+acceleration = 0.01
+
+[node name="TriggerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
+shape = SubResource("CircleShape2D_jk3ah")
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_xe7ji")
+debug_color = Color(0.176803, 0.616777, 0.519976, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_rgj0n")
+
+[connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
+[connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]
