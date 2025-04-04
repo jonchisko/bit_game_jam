@@ -5,22 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://c42b0ug8a66nh" path="res://assets/sfx/ui/Retro2.ogg" id="3_m4hr5"]
 [ext_resource type="PackedScene" uid="uid://c5e6h5mdhwn5m" path="res://scenes/components/RandomStreamPlayer/random_stream_player.tscn" id="3_nj0pp"]
 
-[sub_resource type="Animation" id="Animation_ic3gl"]
-resource_name = "in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1.56917, 0.732046, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_otpn0"]
 length = 0.001
 tracks/0/type = "value"
@@ -64,6 +48,22 @@ tracks/1/keys = {
 "args": [],
 "method": &"_do_heart_beat"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_ic3gl"]
+resource_name = "in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1.56917, 0.732046, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w83wi"]

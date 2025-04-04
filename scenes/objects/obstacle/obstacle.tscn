@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdj684bs0faxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bdj684bs0faxl"]
 
 [ext_resource type="Script" path="res://scenes/objects/obstacle/obstacle.gd" id="1_tbqg5"]
 [ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_4atca"]
@@ -6,8 +6,64 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjgs0"]
 radius = 21.0
 
+[sub_resource type="Animation" id="Animation_pjeqc"]
+resource_name = "hit"
+length = 0.31
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.309372),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_disable"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5sqxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4lshh"]
+_data = {
+"RESET": SubResource("Animation_5sqxp"),
+"hit": SubResource("Animation_pjeqc")
+}
+
 [node name="Obstacle" type="PathFollow2D"]
 script = ExtResource("1_tbqg5")
+scale_increase = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -20,5 +76,8 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_hjgs0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4lshh")
+}
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]

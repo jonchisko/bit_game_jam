@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d36vad6hw2q7h"]
+
+[ext_resource type="Script" path="res://scenes/managers/obstacle_manager/obstacle_manager.gd" id="1_fb3c1"]
+
+[node name="ObstacleManager" type="Node"]
+script = ExtResource("1_fb3c1")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
