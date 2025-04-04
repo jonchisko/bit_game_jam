@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scenes/components/particle_effect/explosion.gd" id="2_c6mi4"]
 
 [node name="Explosion" type="CPUParticles2D"]
+z_index = -5
 emitting = false
 amount = 11
 lifetime = 0.6

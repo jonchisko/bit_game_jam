@@ -56,6 +56,7 @@ spawn_paths = [NodePath("../ObstacleMovementArea/Path2D"), NodePath("../Obstacle
 heart = NodePath("../Heart")
 beat_per_second_increase = 0.05
 beat_increase_event_time = 10.0
+beat_win_condition = 1000
 
 [node name="PopupManager" parent="." node_paths=PackedStringArray("beat_manager") instance=ExtResource("3_wm6lw")]
 beat_manager = NodePath("../BeatManager")
