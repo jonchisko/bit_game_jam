@@ -2,10 +2,22 @@ extends Node
 
 
 signal player_hit
+signal player_won
+signal player_death
 signal player_pickup(item: Area2D)
 signal heart_beat(nth_beat: int)
 signal beats_per_second_update(bps: float)
 
+
+func player_won_emit():
+	print("Signal: Player won")
+	self.player_won.emit()
+
+
+func player_death_emit():
+	print("Signal: Player death")
+	self.player_death.emit()
+	
 
 func player_hit_emit():
 	print("Signal: Player hit")

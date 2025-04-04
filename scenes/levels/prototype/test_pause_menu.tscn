@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbtqjbrdj142"]
+
+[ext_resource type="PackedScene" uid="uid://cfsoyixdr0lee" path="res://scenes/managers/popup_manager/popup_manager.tscn" id="1_63tu5"]
+
+[node name="TestPauseMenu" type="Node2D"]
+
+[node name="PopupManager" parent="." instance=ExtResource("1_63tu5")]

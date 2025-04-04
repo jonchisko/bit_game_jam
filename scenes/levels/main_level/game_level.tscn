@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmt8us5v6e8sb"]
+[gd_scene load_steps=14 format=3 uid="uid://dmt8us5v6e8sb"]
 
 [ext_resource type="PackedScene" uid="uid://d36vad6hw2q7h" path="res://scenes/managers/obstacle_manager/obstacle_manager.tscn" id="1_k6shl"]
 [ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
 [ext_resource type="PackedScene" uid="uid://t0nd8aey4cbb" path="res://scenes/managers/beat/beat_manager.tscn" id="2_1eo3c"]
 [ext_resource type="PackedScene" uid="uid://cfang7hspg2g5" path="res://scenes/objects/heart/heart.tscn" id="3_8ahq6"]
+[ext_resource type="PackedScene" uid="uid://cfsoyixdr0lee" path="res://scenes/managers/popup_manager/popup_manager.tscn" id="3_wm6lw"]
 [ext_resource type="PackedScene" uid="uid://cxoroln3v6oaq" path="res://scenes/managers/hud/hud_manager.tscn" id="4_ab2d3"]
 [ext_resource type="PackedScene" uid="uid://5fs4umfkxqdx" path="res://scenes/ui/hud/counter_ui.tscn" id="5_min31"]
 
@@ -55,6 +56,9 @@ spawn_paths = [NodePath("../ObstacleMovementArea/Path2D"), NodePath("../Obstacle
 heart = NodePath("../Heart")
 beat_per_second_increase = 0.05
 beat_increase_event_time = 10.0
+
+[node name="PopupManager" parent="." node_paths=PackedStringArray("beat_manager") instance=ExtResource("3_wm6lw")]
+beat_manager = NodePath("../BeatManager")
 
 [node name="Background" type="Node" parent="."]
 
