@@ -1,18 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://ex8a32wb0psw"]
+[gd_scene load_steps=9 format=3 uid="uid://ex8a32wb0psw"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_pimm5"]
+[ext_resource type="PackedScene" uid="uid://cpvd3q8b3acfs" path="res://scenes/components/health/health_component.tscn" id="2_nnbpb"]
 [ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_rgj0n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk3ah"]
-radius = 17.0294
+radius = 20.025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xe7ji"]
 radius = 23.0
+
+[sub_resource type="Animation" id="Animation_cuubj"]
+resource_name = "death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_explode"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ajpy2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmck7"]
+_data = {
+"RESET": SubResource("Animation_ajpy2"),
+"death": SubResource("Animation_cuubj")
+}
 
 [node name="Player" type="PathFollow2D"]
 script = ExtResource("1_pimm5")
 max_movement_speed = 1.0
 acceleration = 0.01
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_nnbpb")]
+max_health = 1
 
 [node name="TriggerArea" type="Area2D" parent="."]
 collision_mask = 2
@@ -21,6 +76,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_jk3ah")
 
 [node name="PickUpArea" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
@@ -46,6 +102,11 @@ angular_velocity_min = -46.67
 angular_velocity_max = 73.33
 scale_amount_min = 0.1
 scale_amount_max = 0.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qmck7")
+}
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]

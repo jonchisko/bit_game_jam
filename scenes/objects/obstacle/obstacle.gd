@@ -33,7 +33,7 @@ func _increasse_size_with_progress() -> void:
 
 
 func _on_trigger_area_area_entered(area: Area2D) -> void:
-	print("Hit player")
+	print("Obstacle: Hit player")
 	
 	self.animation_player.get_animation("hit").track_set_key_value(0, 0, self.scale)
 	self.animation_player.get_animation("hit").track_set_key_value(0, 1, self.scale + Vector2.ONE * 0.3)

@@ -10,7 +10,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_x524x"]
 _data = {
-"points": PackedVector2Array(0, 0, 262, 80, 36, 292, -262, 80, 293.169, -113.372, 620, 292)
+"points": PackedVector2Array(0, 0, 262, 80, 101, 292, -262, 80, 293.169, -113.372, 555, 292)
 }
 point_count = 2
 
@@ -72,29 +72,34 @@ position = Vector2(0, -25)
 curve = SubResource("Curve2D_x524x")
 
 [node name="Player" parent="PlayerMovementArea/Path2D" instance=ExtResource("1_odyes")]
-position = Vector2(36, 292)
+position = Vector2(101, 292)
 rotation = 0.296352
 loop = false
 
 [node name="ObstacleMovementArea" type="Node" parent="."]
 
 [node name="Path2D" type="Path2D" parent="ObstacleMovementArea"]
+z_index = -5
 position = Vector2(-1.89706, 0.110294)
 scale = Vector2(1.00735, 1.00735)
 curve = SubResource("Curve2D_xf5hn")
 
 [node name="Path2D2" type="Path2D" parent="ObstacleMovementArea"]
+z_index = -5
 curve = SubResource("Curve2D_b2yy7")
 
 [node name="Path2D3" type="Path2D" parent="ObstacleMovementArea"]
+z_index = -5
 curve = SubResource("Curve2D_fv2j5")
 
 [node name="Path2D4" type="Path2D" parent="ObstacleMovementArea"]
+z_index = -5
 position = Vector2(-2.57855, 0.121428)
 scale = Vector2(1.00714, 1.00714)
 curve = SubResource("Curve2D_i42wn")
 
 [node name="Path2D5" type="Path2D" parent="ObstacleMovementArea"]
+z_index = -5
 curve = SubResource("Curve2D_cd00j")
 
 [node name="Hud" type="CanvasLayer" parent="."]

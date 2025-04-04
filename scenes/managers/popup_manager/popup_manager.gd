@@ -23,9 +23,8 @@ func _ready() -> void:
 	self.add_child(self._instantaited_end_menu)
 	self._instantaited_end_menu.main_menu_clicked.connect(self._on_pause_menu_clicked)
 	
-	GameEvents.player_won.connect(self._open_end_menu)
-	GameEvents.player_death.connect(self._open_end_menu)
-
+	GameEvents.player_won.connect(self._open_end_menu.bind(true))
+	GameEvents.player_death.connect(self._open_end_menu.bind(false))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
