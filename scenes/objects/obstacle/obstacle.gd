@@ -50,7 +50,7 @@ func _disable() -> void:
 	$TriggerArea/CollisionShape2D.set_deferred("disabled", true)
 
 
-func _on_heart_beat_emit() -> void:
+func _on_heart_beat_emit(_nth_beat: int) -> void:
 	var tween = self.create_tween()
 	tween.tween_method(self._tween_heart_beat_move.bind(self.progress_ratio + self.heart_beat_move), 0.0, 1.0, 0.2)\
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)

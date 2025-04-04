@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmt8us5v6e8sb"]
+[gd_scene load_steps=13 format=3 uid="uid://dmt8us5v6e8sb"]
 
 [ext_resource type="PackedScene" uid="uid://d36vad6hw2q7h" path="res://scenes/managers/obstacle_manager/obstacle_manager.tscn" id="1_k6shl"]
 [ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
-[ext_resource type="Script" path="res://scenes/levels/main_level/tmp_manager.gd" id="2_24wj8"]
+[ext_resource type="PackedScene" uid="uid://t0nd8aey4cbb" path="res://scenes/managers/beat/beat_manager.tscn" id="2_1eo3c"]
+[ext_resource type="PackedScene" uid="uid://cfang7hspg2g5" path="res://scenes/objects/heart/heart.tscn" id="3_8ahq6"]
+[ext_resource type="PackedScene" uid="uid://cxoroln3v6oaq" path="res://scenes/managers/hud/hud_manager.tscn" id="4_ab2d3"]
+[ext_resource type="PackedScene" uid="uid://5fs4umfkxqdx" path="res://scenes/ui/hud/counter_ui.tscn" id="5_min31"]
 
 [sub_resource type="Curve2D" id="Curve2D_x524x"]
 _data = {
@@ -48,7 +51,15 @@ position = Vector2(320, 180)
 [node name="ObstacleManager" parent="." node_paths=PackedStringArray("spawn_paths") instance=ExtResource("1_k6shl")]
 spawn_paths = [NodePath("../ObstacleMovementArea/Path2D"), NodePath("../ObstacleMovementArea/Path2D2"), NodePath("../ObstacleMovementArea/Path2D3"), NodePath("../ObstacleMovementArea/Path2D4"), NodePath("../ObstacleMovementArea/Path2D5")]
 
+[node name="BeatManager" parent="." node_paths=PackedStringArray("heart") instance=ExtResource("2_1eo3c")]
+heart = NodePath("../Heart")
+beat_per_second_increase = 0.05
+beat_increase_event_time = 10.0
+
 [node name="Background" type="Node" parent="."]
+
+[node name="Heart" parent="." instance=ExtResource("3_8ahq6")]
+position = Vector2(330, 20)
 
 [node name="PlayerMovementArea" type="Node" parent="."]
 
@@ -82,8 +93,20 @@ curve = SubResource("Curve2D_i42wn")
 [node name="Path2D5" type="Path2D" parent="ObstacleMovementArea"]
 curve = SubResource("Curve2D_cd00j")
 
-[node name="TmpManager" type="Node" parent="."]
-script = ExtResource("2_24wj8")
+[node name="Hud" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Timer" type="Timer" parent="TmpManager"]
-autostart = true
+[node name="HudManager" parent="Hud" node_paths=PackedStringArray("beat_manager", "counter_bps", "counter_beats") instance=ExtResource("4_ab2d3")]
+beat_manager = NodePath("../../BeatManager")
+counter_bps = NodePath("CurrentBpsUi")
+counter_beats = NodePath("BeatsSurvivedUi")
+
+[node name="BeatsSurvivedUi" parent="Hud/HudManager" instance=ExtResource("5_min31")]
+offset_left = -192.0
+
+[node name="CurrentBpsUi" parent="Hud/HudManager" instance=ExtResource("5_min31")]
+offset_left = -192.0
+offset_top = 33.0
+offset_bottom = 66.0
+title = "BPS:"
+init_value = 200

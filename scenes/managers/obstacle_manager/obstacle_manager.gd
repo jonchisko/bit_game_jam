@@ -6,16 +6,6 @@ extends Node
 var _obstacle_scene: PackedScene = preload("res://scenes/objects/obstacle/obstacle.tscn")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _spawn_obstacle() -> void:
 	var spawn_path = self.spawn_paths.pick_random()
 	

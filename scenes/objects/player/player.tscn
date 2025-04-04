@@ -15,11 +15,13 @@ max_movement_speed = 1.0
 acceleration = 0.01
 
 [node name="TriggerArea" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea"]
 shape = SubResource("CircleShape2D_jk3ah")
 
 [node name="PickUpArea" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
 shape = SubResource("CircleShape2D_xe7ji")

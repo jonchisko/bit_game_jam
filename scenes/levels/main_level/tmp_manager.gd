@@ -10,4 +10,5 @@ func _ready() -> void:
 
 
 func _on_timeout() -> void:
-	GameEvents.heart_beat_emit()
+	pass
+	#GameEvents.heart_beat_emit()

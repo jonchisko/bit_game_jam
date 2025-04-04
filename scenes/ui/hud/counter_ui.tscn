@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://5fs4umfkxqdx"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud/counter_ui.gd" id="1_jminf"]
+
+[node name="CounterUi" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -151.0
+offset_bottom = 33.0
+grow_horizontal = 0
+script = ExtResource("1_jminf")
+title = "Beats survived:"
+init_value = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Beats survived:"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
