@@ -14,6 +14,7 @@ var current_beats_per_second: float = 0.1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.heart.heart_beat.connect(self._on_heart_beat)
+	GameEvents.beats_per_second_update_emit(self.current_beats_per_second)
 	self.heart.update_beat_speed(self._get_current_beat_period())
 	
 	$Timer.wait_time = self.beat_increase_event_time

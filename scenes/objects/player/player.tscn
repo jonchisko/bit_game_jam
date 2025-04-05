@@ -1,14 +1,52 @@
-[gd_scene load_steps=9 format=3 uid="uid://ex8a32wb0psw"]
+[gd_scene load_steps=16 format=3 uid="uid://ex8a32wb0psw"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_pimm5"]
 [ext_resource type="PackedScene" uid="uid://cpvd3q8b3acfs" path="res://scenes/components/health/health_component.tscn" id="2_nnbpb"]
-[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_rgj0n"]
+[ext_resource type="Texture2D" uid="uid://ca0t7md8xirdb" path="res://assets/sprites/bee/bee_spirtesheet.png" id="3_fug4x"]
+[ext_resource type="Texture2D" uid="uid://dgl0crxwwscto" path="res://assets/sprites/new_atlas_texture.tres" id="4_wcokc"]
+[ext_resource type="AudioStream" uid="uid://i5pt0e0y6wxd" path="res://assets/sfx/game/Spell Impact 1.ogg" id="5_g8idt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jk3ah"]
 radius = 20.025
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xe7ji"]
 radius = 23.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idipw"]
+atlas = ExtResource("3_fug4x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx1k3"]
+atlas = ExtResource("3_fug4x")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rdon"]
+atlas = ExtResource("3_fug4x")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_311h5"]
+atlas = ExtResource("3_fug4x")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f31pa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idipw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx1k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rdon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_311h5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_ajpy2"]
 length = 0.001
@@ -54,6 +92,20 @@ tracks/1/keys = {
 "method": &"_explode"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qmck7"]
 _data = {
@@ -83,16 +135,17 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_xe7ji")
 debug_color = Color(0.176803, 0.616777, 0.519976, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_rgj0n")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_f31pa")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.666667)
 position = Vector2(0, 19)
 amount = 6
 randomness = 0.06
 lifetime_randomness = 0.21
-texture = ExtResource("2_rgj0n")
+texture = ExtResource("4_wcokc")
 direction = Vector2(0, 1)
 spread = 56.67
 gravity = Vector2(0, 100)
@@ -100,13 +153,17 @@ initial_velocity_min = 60.18
 initial_velocity_max = 120.35
 angular_velocity_min = -46.67
 angular_velocity_max = 73.33
-scale_amount_min = 0.1
-scale_amount_max = 0.3
+scale_amount_max = 1.5
+color = Color(0.305882, 0.517647, 0.964706, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qmck7")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_g8idt")
+bus = &"SFX"
 
 [connection signal="area_entered" from="TriggerArea" to="." method="_on_trigger_area_area_entered"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_pick_up_area_area_entered"]

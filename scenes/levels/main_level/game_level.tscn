@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmt8us5v6e8sb"]
+[gd_scene load_steps=17 format=3 uid="uid://dmt8us5v6e8sb"]
 
 [ext_resource type="PackedScene" uid="uid://d36vad6hw2q7h" path="res://scenes/managers/obstacle_manager/obstacle_manager.tscn" id="1_k6shl"]
 [ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cfsoyixdr0lee" path="res://scenes/managers/popup_manager/popup_manager.tscn" id="3_wm6lw"]
 [ext_resource type="PackedScene" uid="uid://cxoroln3v6oaq" path="res://scenes/managers/hud/hud_manager.tscn" id="4_ab2d3"]
 [ext_resource type="PackedScene" uid="uid://5fs4umfkxqdx" path="res://scenes/ui/hud/counter_ui.tscn" id="5_min31"]
+[ext_resource type="Script" path="res://scenes/levels/main_level/parallax_background.gd" id="8_7516f"]
+[ext_resource type="Texture2D" uid="uid://dw26fdpaelmo1" path="res://assets/sprites/bg/Clouds 7/3.png" id="8_alla7"]
+[ext_resource type="Texture2D" uid="uid://drbuqv8kp5q77" path="res://assets/sprites/bg/Clouds 7/1.png" id="8_nytpw"]
 
 [sub_resource type="Curve2D" id="Curve2D_x524x"]
 _data = {
@@ -108,15 +111,45 @@ visible = false
 
 [node name="HudManager" parent="Hud" node_paths=PackedStringArray("beat_manager", "counter_bps", "counter_beats") instance=ExtResource("4_ab2d3")]
 beat_manager = NodePath("../../BeatManager")
-counter_bps = NodePath("CurrentBpsUi")
-counter_beats = NodePath("BeatsSurvivedUi")
+counter_bps = NodePath("VBoxContainer/CurrentBpsUi")
+counter_beats = NodePath("VBoxContainer/BeatsSurvivedUi")
 
-[node name="BeatsSurvivedUi" parent="Hud/HudManager" instance=ExtResource("5_min31")]
-offset_left = -192.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/HudManager"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_bottom = 82.0
+grow_horizontal = 0
 
-[node name="CurrentBpsUi" parent="Hud/HudManager" instance=ExtResource("5_min31")]
-offset_left = -192.0
-offset_top = 33.0
-offset_bottom = 66.0
-title = "BPS:"
+[node name="BeatsSurvivedUi" parent="Hud/HudManager/VBoxContainer" instance=ExtResource("5_min31")]
+z_index = -5
+layout_mode = 2
+title = "Spawns survived:"
+
+[node name="CurrentBpsUi" parent="Hud/HudManager/VBoxContainer" instance=ExtResource("5_min31")]
+z_index = -5
+layout_mode = 2
+title = "Spawns/second:"
 init_value = 200
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("8_7516f")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(10, 8)
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(318, 188)
+scale = Vector2(1.18622, 1.2653)
+texture = ExtResource("8_nytpw")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.231373, 1, 1, 1)
+position = Vector2(1, 7)
+motion_mirroring = Vector2(0, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(320, 185)
+texture = ExtResource("8_alla7")

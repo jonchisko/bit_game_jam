@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/hud/counter_ui.gd" id="1_jminf"]
 
 [node name="CounterUi" type="PanelContainer"]
+custom_minimum_size = Vector2(150, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

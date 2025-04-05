@@ -9,7 +9,7 @@ signal main_menu_clicked
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-var _text: String = "Number of beats"
+var _text: String = "Number of spawns"
 
 
 func open_end_menu(won: bool, number_of_beats: int) -> void:

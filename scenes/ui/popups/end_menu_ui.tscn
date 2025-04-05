@@ -124,7 +124,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_vm3tg")
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Number of beats: 10000"
+text = "Number of spawns: 10000"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -1,0 +1,60 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://rd63abocq7c3"]
+
+[ext_resource type="Texture2D" uid="uid://cv2b7qkgfr2sw" path="res://assets/sprites/ui/FreeButtons.png" id="1_g1wfl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wmrte"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(1, 1, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxhg1"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(49, 2, 14, 13)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2r04c"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(33, 1, 14, 14)
+modulate_color = Color(0.64818, 0.861028, 0.873304, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m3rw6"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(33, 1, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6gnhd"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(49, 2, 14, 13)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqumk"]
+texture = ExtResource("1_g1wfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(35, 51, 10, 10)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_wmrte")
+Button/styles/focus = SubResource("StyleBoxTexture_rxhg1")
+Button/styles/hover = SubResource("StyleBoxTexture_2r04c")
+Button/styles/normal = SubResource("StyleBoxTexture_m3rw6")
+Button/styles/pressed = SubResource("StyleBoxTexture_6gnhd")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_wqumk")

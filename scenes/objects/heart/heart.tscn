@@ -1,9 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfang7hspg2g5"]
+[gd_scene load_steps=14 format=3 uid="uid://cfang7hspg2g5"]
 
 [ext_resource type="Script" path="res://scenes/objects/heart/heart.gd" id="1_770el"]
-[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="2_wiken"]
-[ext_resource type="AudioStream" uid="uid://c42b0ug8a66nh" path="res://assets/sfx/ui/Retro2.ogg" id="3_m4hr5"]
+[ext_resource type="Texture2D" uid="uid://uyyhy7mn3d48" path="res://assets/sprites/enemy_bee/beeanim-Sheet.png" id="2_cy7w1"]
 [ext_resource type="PackedScene" uid="uid://c5e6h5mdhwn5m" path="res://scenes/components/RandomStreamPlayer/random_stream_player.tscn" id="3_nj0pp"]
+[ext_resource type="AudioStream" uid="uid://cp2fi8j4x66ex" path="res://assets/sfx/game/Firebuff 2.ogg" id="4_6k1a3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpy2n"]
+atlas = ExtResource("2_cy7w1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1uue"]
+atlas = ExtResource("2_cy7w1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmjeq"]
+atlas = ExtResource("2_cy7w1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w7ih"]
+atlas = ExtResource("2_cy7w1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atvrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpy2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1uue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmjeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w7ih")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_otpn0"]
 length = 0.001
@@ -33,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+"values": [Vector2(3, 3), Vector2(2, 2), Vector2(3, 3)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -63,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1.56917, 0.732046, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(0, 0), Vector2(3.4, 3.4), Vector2(3, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w83wi"]
@@ -77,8 +113,12 @@ _data = {
 script = ExtResource("1_770el")
 min_period = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wiken")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_atvrx")
+autoplay = "default"
+frame_progress = 0.630845
+flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -86,4 +126,5 @@ libraries = {
 }
 
 [node name="RandomStreamPlayer" parent="." instance=ExtResource("3_nj0pp")]
-random_audios = Array[AudioStream]([ExtResource("3_m4hr5")])
+bus = &"SFX"
+random_audios = Array[AudioStream]([ExtResource("4_6k1a3")])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bscgbnascubmd"]
 
-[ext_resource type="Texture2D" uid="uid://cc35xna7hm7fx" path="res://icon.svg" id="1_h3wuf"]
+[ext_resource type="Texture2D" uid="uid://dgl0crxwwscto" path="res://assets/sprites/new_atlas_texture.tres" id="1_r8g1r"]
 [ext_resource type="Script" path="res://scenes/components/particle_effect/explosion.gd" id="2_c6mi4"]
 
 [node name="Explosion" type="CPUParticles2D"]
@@ -11,12 +11,11 @@ lifetime = 0.6
 one_shot = true
 explosiveness = 0.78
 lifetime_randomness = 0.44
-texture = ExtResource("1_h3wuf")
+texture = ExtResource("1_r8g1r")
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 183.91
 initial_velocity_max = 327.58
-scale_amount_min = 0.08
-scale_amount_max = 0.2
+scale_amount_max = 2.0
 script = ExtResource("2_c6mi4")
