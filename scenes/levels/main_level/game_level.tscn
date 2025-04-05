@@ -125,13 +125,14 @@ grow_horizontal = 0
 [node name="BeatsSurvivedUi" parent="Hud/HudManager/VBoxContainer" instance=ExtResource("5_min31")]
 z_index = -5
 layout_mode = 2
-title = "Spawns survived:"
+title = "Periods survived:"
+init_value = 0
 
 [node name="CurrentBpsUi" parent="Hud/HudManager/VBoxContainer" instance=ExtResource("5_min31")]
 z_index = -5
 layout_mode = 2
 title = "Spawns/second:"
-init_value = 200
+init_value = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("8_7516f")

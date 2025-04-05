@@ -6,7 +6,8 @@ func _ready() -> void:
 	print("Music autoload")
 	GameEvents.beats_per_second_update.connect(self._start_music)
 	GameEvents.player_death.connect(self._stop_music)
-
+	GameEvents.to_main_menu.connect(self._stop_music)
+	
 
 func _start_music(_bps: float) -> void:
 	if not $AudioStreamPlayer.playing:

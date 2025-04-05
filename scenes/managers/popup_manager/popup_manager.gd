@@ -45,6 +45,7 @@ func _open_end_menu(won: bool) -> void:
 func _on_pause_menu_clicked() -> void:
 	self.get_tree().paused = false
 	SceneTransition.change_to_scene("res://scenes/levels/main/main_menu.tscn")
+	GameEvents.to_main_menu.emit()
 	
 	
 func _on_pause_continue_clicked() -> void:

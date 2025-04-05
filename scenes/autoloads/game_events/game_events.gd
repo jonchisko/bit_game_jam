@@ -1,6 +1,7 @@
 extends Node
 
 
+signal to_main_menu
 signal player_hit
 signal player_won
 signal player_death
