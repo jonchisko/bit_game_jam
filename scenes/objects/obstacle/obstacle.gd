@@ -1,4 +1,5 @@
 extends PathFollow2D
+class_name Obstacle
 
 
 @export var constant_speed: float = 0.1
@@ -7,9 +8,14 @@ extends PathFollow2D
 @export var original_scale: Vector2 = Vector2(0.3, 0.3)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var _original_scale: Vector2
 var _explosion_effect: PackedScene = preload("res://scenes/components/particle_effect/explosion.tscn")
+
+
+func set_sprite_texture(sprite: Texture) -> void:
+	self.sprite_2d.texture = sprite
 
 
 # Called when the node enters the scene tree for the first time.

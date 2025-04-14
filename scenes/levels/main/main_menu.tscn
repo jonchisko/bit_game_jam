@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkaf1e56tgrpi"]
+[gd_scene load_steps=3 format=3 uid="uid://bkaf1e56tgrpi"]
 
 [ext_resource type="PackedScene" uid="uid://cspgy0hihabqn" path="res://scenes/ui/main_menu/main_menu_ui.tscn" id="1_pkml6"]
 [ext_resource type="PackedScene" uid="uid://c451vjg3td32" path="res://scenes/ui/main_menu/options_menu_ui.tscn" id="2_eru6h"]
-[ext_resource type="Texture2D" uid="uid://drbuqv8kp5q77" path="res://assets/sprites/bg/Clouds 7/1.png" id="3_21egr"]
-[ext_resource type="Texture2D" uid="uid://ifutjqu64aba" path="res://assets/sprites/bg/Clouds 7/2.png" id="4_gnemx"]
-[ext_resource type="Texture2D" uid="uid://ckl5aau6qij8l" path="res://assets/sprites/bg/Clouds 7/4.png" id="5_2da22"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -14,15 +11,3 @@
 options_menu = NodePath("../OptionsMenuUi")
 
 [node name="OptionsMenuUi" parent="CanvasLayer" instance=ExtResource("2_eru6h")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(340, 193)
-scale = Vector2(1.48413, 1.47812)
-texture = ExtResource("3_21egr")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-scale = Vector2(1.06342, 1.0776)
-texture = ExtResource("4_gnemx")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
-texture = ExtResource("5_2da22")

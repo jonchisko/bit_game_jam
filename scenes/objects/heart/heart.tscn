@@ -1,45 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfang7hspg2g5"]
+[gd_scene load_steps=9 format=3 uid="uid://cfang7hspg2g5"]
 
 [ext_resource type="Script" path="res://scenes/objects/heart/heart.gd" id="1_770el"]
-[ext_resource type="Texture2D" uid="uid://uyyhy7mn3d48" path="res://assets/sprites/enemy_bee/beeanim-Sheet.png" id="2_cy7w1"]
 [ext_resource type="PackedScene" uid="uid://c5e6h5mdhwn5m" path="res://scenes/components/RandomStreamPlayer/random_stream_player.tscn" id="3_nj0pp"]
 [ext_resource type="AudioStream" uid="uid://cp2fi8j4x66ex" path="res://assets/sfx/game/Firebuff 2.ogg" id="4_6k1a3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpy2n"]
-atlas = ExtResource("2_cy7w1")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1uue"]
-atlas = ExtResource("2_cy7w1")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mmjeq"]
-atlas = ExtResource("2_cy7w1")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5w7ih"]
-atlas = ExtResource("2_cy7w1")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_atvrx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpy2n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d1uue")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mmjeq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5w7ih")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://cddldiydm1l04" path="res://assets/sprites/heart/heart.png" id="5_pntrr"]
 
 [sub_resource type="Animation" id="Animation_otpn0"]
 length = 0.001
@@ -113,12 +77,9 @@ _data = {
 script = ExtResource("1_770el")
 min_period = 0.5
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_atvrx")
-autoplay = "default"
-frame_progress = 0.630845
-flip_v = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_pntrr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

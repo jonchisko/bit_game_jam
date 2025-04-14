@@ -1,43 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdj684bs0faxl"]
+[gd_scene load_steps=7 format=3 uid="uid://bdj684bs0faxl"]
 
 [ext_resource type="Script" path="res://scenes/objects/obstacle/obstacle.gd" id="1_tbqg5"]
-[ext_resource type="Texture2D" uid="uid://uyyhy7mn3d48" path="res://assets/sprites/enemy_bee/beeanim-Sheet.png" id="2_vwcqs"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcqa3"]
-atlas = ExtResource("2_vwcqs")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_03kj8"]
-atlas = ExtResource("2_vwcqs")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hs6d"]
-atlas = ExtResource("2_vwcqs")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3hgk"]
-atlas = ExtResource("2_vwcqs")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ja8o1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rcqa3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_03kj8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hs6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b3hgk")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://cmu45fbf6t3x3" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke2_40x40.png" id="2_mp705"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjgs0"]
 radius = 9.05539
@@ -100,15 +64,14 @@ _data = {
 [node name="Obstacle" type="PathFollow2D"]
 rotates = false
 script = ExtResource("1_tbqg5")
+constant_speed = 0.06
 heart_beat_move = 0.15
-scale_increase = 1.0
+scale_increase = 2.5
 original_scale = Vector2(1.5, 1.5)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ja8o1")
-autoplay = "default"
-frame_progress = 0.971889
-flip_v = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_mp705")
 
 [node name="TriggerArea" type="Area2D" parent="."]
 collision_layer = 2

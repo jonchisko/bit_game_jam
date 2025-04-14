@@ -2,6 +2,7 @@ extends Node
 
 
 @export var spawn_paths: Array[Path2D]
+@export var sprites: Array[Texture]
 
 var _obstacle_scene: PackedScene = preload("res://scenes/objects/obstacle/obstacle.tscn")
 var _is_linked = false
@@ -15,6 +16,7 @@ func _spawn_obstacle() -> void:
 	
 	var instantiated = self._obstacle_scene.instantiate()
 	spawn_path.add_child(instantiated)
+	(instantiated as Obstacle).set_sprite_texture(self.sprites.pick_random())
 	instantiated.set_scale(instantiated.original_scale)
 	
 

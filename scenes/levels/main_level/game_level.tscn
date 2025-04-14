@@ -1,15 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmt8us5v6e8sb"]
+[gd_scene load_steps=20 format=3 uid="uid://dmt8us5v6e8sb"]
 
 [ext_resource type="PackedScene" uid="uid://d36vad6hw2q7h" path="res://scenes/managers/obstacle_manager/obstacle_manager.tscn" id="1_k6shl"]
 [ext_resource type="PackedScene" uid="uid://ex8a32wb0psw" path="res://scenes/objects/player/player.tscn" id="1_odyes"]
 [ext_resource type="PackedScene" uid="uid://t0nd8aey4cbb" path="res://scenes/managers/beat/beat_manager.tscn" id="2_1eo3c"]
+[ext_resource type="Texture2D" uid="uid://cmu45fbf6t3x3" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke2_40x40.png" id="2_mqibl"]
 [ext_resource type="PackedScene" uid="uid://cfang7hspg2g5" path="res://scenes/objects/heart/heart.tscn" id="3_8ahq6"]
+[ext_resource type="Texture2D" uid="uid://din2f07vr64bu" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke3_40x40.png" id="3_dlqbn"]
 [ext_resource type="PackedScene" uid="uid://cfsoyixdr0lee" path="res://scenes/managers/popup_manager/popup_manager.tscn" id="3_wm6lw"]
+[ext_resource type="Texture2D" uid="uid://b5fitpujr7441" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke4_40x40.png" id="4_8iqqx"]
 [ext_resource type="PackedScene" uid="uid://cxoroln3v6oaq" path="res://scenes/managers/hud/hud_manager.tscn" id="4_ab2d3"]
+[ext_resource type="Texture2D" uid="uid://0it4wrrhilhe" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke6_40x40.png" id="5_eduor"]
 [ext_resource type="PackedScene" uid="uid://5fs4umfkxqdx" path="res://scenes/ui/hud/counter_ui.tscn" id="5_min31"]
-[ext_resource type="Script" path="res://scenes/levels/main_level/parallax_background.gd" id="8_7516f"]
-[ext_resource type="Texture2D" uid="uid://dw26fdpaelmo1" path="res://assets/sprites/bg/Clouds 7/3.png" id="8_alla7"]
-[ext_resource type="Texture2D" uid="uid://drbuqv8kp5q77" path="res://assets/sprites/bg/Clouds 7/1.png" id="8_nytpw"]
+[ext_resource type="Texture2D" uid="uid://bnq8mo1u2ebue" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke_40x40.png" id="6_85frr"]
+[ext_resource type="Texture2D" uid="uid://d0ls7q4ntq1h7" path="res://assets/sprites/heart/krvnicke/Bele_Krvnicke_140x40.png" id="7_imkba"]
 
 [sub_resource type="Curve2D" id="Curve2D_x524x"]
 _data = {
@@ -54,6 +57,7 @@ position = Vector2(320, 180)
 
 [node name="ObstacleManager" parent="." node_paths=PackedStringArray("spawn_paths") instance=ExtResource("1_k6shl")]
 spawn_paths = [NodePath("../ObstacleMovementArea/Path2D"), NodePath("../ObstacleMovementArea/Path2D2"), NodePath("../ObstacleMovementArea/Path2D3"), NodePath("../ObstacleMovementArea/Path2D4"), NodePath("../ObstacleMovementArea/Path2D5")]
+sprites = Array[Texture]([ExtResource("2_mqibl"), ExtResource("3_dlqbn"), ExtResource("4_8iqqx"), ExtResource("5_eduor"), ExtResource("6_85frr"), ExtResource("7_imkba")])
 
 [node name="BeatManager" parent="." node_paths=PackedStringArray("heart") instance=ExtResource("2_1eo3c")]
 heart = NodePath("../Heart")
@@ -133,24 +137,3 @@ z_index = -5
 layout_mode = 2
 title = "Spawns/second:"
 init_value = 0
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("8_7516f")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(10, 8)
-motion_scale = Vector2(0, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(318, 188)
-scale = Vector2(1.18622, 1.2653)
-texture = ExtResource("8_nytpw")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.231373, 1, 1, 1)
-position = Vector2(1, 7)
-motion_mirroring = Vector2(0, 400)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(320, 185)
-texture = ExtResource("8_alla7")
